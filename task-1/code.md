@@ -28,7 +28,30 @@ The program should identify eligible students, rank them according to aggregate 
 13. Stop the program.
 
 ## 3. Flowchart
+```mermaid
+
+flowchart TD
+    A([Start]) --> B[/Enter number of students/]
+    B --> C[Enter student details]
+    C --> D[/Enter marks, attendance and income/]
+    D --> E{Aggregate >= 75?}
+    E -->|Yes| F{Each subject >= 40?}
+    E -->|No| J[Student not eligible]
+    F -->|Yes| G{Attendance >= 75%?}
+    F -->|No| J
+    G -->|Yes| H{Income <= 300000?}
+    G -->|No| J
+    H -->|Yes| I[Add student to eligible list]
+    H -->|No| J
+    I --> K{More students?}
+    J --> K
+    K -->|Yes| C
+    K -->|No| L[Sort by marks and attendance]
+    L --> M[Display student ranking]
+    M --> N([Stop])
+
 ```
+
 ```
 ## 4. Python Source Code
 
@@ -82,27 +105,3 @@ Attendance: 90.0
 Scholarship Allocation Completed!
 ```
 
-## 6. Mermaid Flowchart Code
-```mermaid
-
-flowchart TD
-    A([Start]) --> B[/Enter number of students/]
-    B --> C[Enter student details]
-    C --> D[/Enter marks, attendance and income/]
-    D --> E{Aggregate >= 75?}
-    E -->|Yes| F{Each subject >= 40?}
-    E -->|No| J[Student not eligible]
-    F -->|Yes| G{Attendance >= 75%?}
-    F -->|No| J
-    G -->|Yes| H{Income <= 300000?}
-    G -->|No| J
-    H -->|Yes| I[Add student to eligible list]
-    H -->|No| J
-    I --> K{More students?}
-    J --> K
-    K -->|Yes| C
-    K -->|No| L[Sort by marks and attendance]
-    L --> M[Display student ranking]
-    M --> N([Stop])
-
-```
