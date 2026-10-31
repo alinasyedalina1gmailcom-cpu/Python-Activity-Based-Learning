@@ -25,7 +25,42 @@ Develop a Python program to calculate household electricity bills based on the n
 12. Stop the program.
 
 ## 3. Flowchart
-```
+```mermaid
+flowchart TD
+    A([Start]) --> B[/Enter number of months/]
+    B --> C[/Enter month and units/]
+    C --> D{Units <= 100?}
+
+    D -- Yes --> E[Charge = Units * 2]
+    D -- No --> F{Units <= 200?}
+
+    F -- Yes --> G[Charge = 200 + Remaining * 3]
+    F -- No --> H[Charge = 500 + Remaining * 5]
+
+    E --> I[Add Fixed Charge]
+    G --> I
+    H --> I
+
+    I --> J{Units > 300?}
+    J -- Yes --> K[Add 5% Surcharge]
+    J -- No --> L{Units < 100?}
+    K --> L
+
+    L -- Yes --> M[Apply 5% Rebate]
+    L -- No --> N[Calculate Total Bill]
+    M --> N
+
+    N --> O{Previous Month Exists?}
+    O -- Yes --> P[Compare Monthly Bills]
+    O -- No --> Q[Display Bill]
+    P --> R{Increase > 30%?}
+    R -- Yes --> S[Display Warning]
+    R -- No --> Q
+    S --> Q
+
+    Q --> T{More Months?}
+    T -- Yes --> C
+    T -- No --> U([Stop])
 ```
 ## 5. Sample Input
 
